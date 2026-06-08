@@ -25,7 +25,7 @@ const App = () => {
     </h1>
     {
         messages.map(
-            (text, index) => <Message text={text} />
+            (text, index) => <Message key={index} text={text} />
                 
             )
     }
@@ -46,7 +46,7 @@ const App = () => {
     }}>
 
     </form>
-    <input name='incoming text' id='incoming text'/>
+    <input name='incoming_text' id='incoming_text'/>
     <button type='submit'>
         send
     </button>
