@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const Messages = ({text}) =>{
+const Message = ({text}) =>{
     return <>
         <p>
         {text}
@@ -18,7 +18,8 @@ const App = () => {
     ]
     */
 
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState<string[]>([]);
+    const [message, setMessage] = useState('')
     return <>
     <h1>
         Chat app
@@ -32,24 +33,17 @@ const App = () => {
     <p>
         use our app 
     </p>
-    <form onSubmit={(event) =>{
+    <form  onSubmit={(event) =>{
         event.preventDefault();
-
-        // determine new message
-        const new_message = event.target.incoming_text.value;
-        //add new message to the message state
-        setMessages([...messages, new_message]);
-        //this is NOT best practice
-        document.getElementById('incoming_text').value = '';
-
-        console.log(event);
+        setMessages(prev => [...prev, message]);
+        setMessage("");
     }}>
 
-    </form>
-    <input name='incoming_text' id='incoming_text'/>
+    <input type='text' name="message" value={message} onChange={(e) => setMessage(e.target.value)}/>
     <button type='submit'>
         send
     </button>
+    </form>
     
     </>;
 }
