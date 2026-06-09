@@ -1,38 +1,34 @@
 import {useState} from 'react';
-
+import './App.css';
+import Message from './components/Message';
+/*
 const Message = ({text}) =>{
     return <>
         <p>
         {text}
-         </p>
+        </p>
     </>;
 }
-
+*/
 
 const App = () => {
-    /*
-    const messages = [
-        "pizza",
-        "apples",
-        "eggs"
-    ]
-    */
 
-    const [messages, setMessages] = useState<string[]>([]);
-    const [message, setMessage] = useState('')
+    const [messages, setMessages] = useState([]);
+    //const [messages, setMessages] = useState<string[]>([]);
+    //const [message, setMessage] = useState('');
     return <>
     <h1>
-        Chat app
+        Chat Room
     </h1>
+    <p>
+        Use our app!!
+    </p>
     {
         messages.map(
             (text, index) => <Message key={index} text={text} />
-                
-            )
+        )
     }
-    <p>
-        use our app 
-    </p>
+    
     <form  onSubmit={(event) =>{
         event.preventDefault();
         setMessages(prev => [...prev, message]);
